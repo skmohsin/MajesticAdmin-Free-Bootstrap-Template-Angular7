@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="d-flex justify-content-between flex-wrap">
+      <div class="d-flex align-items-end flex-wrap">
+        <div class="mr-md-3 mr-xl-5">
+          <h2>Foods</h2>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-end flex-wrap">
+        <!-- <button type="button" class="btn btn-light bg-white btn-icon mr-3 d-none d-md-block ">
+          <i class="mdi mdi-download text-muted"></i>
+        </button>
+        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
+          <i class="mdi mdi-clock-outline text-muted"></i>
+        </button>
+        <button type="button" class="btn btn-light bg-white btn-icon mr-3 mt-2 mt-xl-0">
+          <i class="mdi mdi-plus text-muted"></i>
+        </button> -->
+        <button class="btn btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModal">Add New Food</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 grid-margin stretch-card" *ngFor="let food of foods">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{food.name}}</h4>
+        <p class="card-description">Rs. <b>{{food.price}}</b> <code
+            [ngClass]="{'text-success': food.category.name === 'Veg', 'text-danger': food.category.name === 'Non-Veg' }"><strong>{{food.category.name}}</strong></code>
+        </p>
+        <div class="template-demo">
+          <img src="{{foodImageUrl}}{{food.picture}}" width="100%" />
+          <button type="button" class="btn btn-inverse-dark btn-icon">
+            <i class="mdi mdi-lead-pencil"></i>
+          </button>
+          <button type="button" class="btn btn-inverse-dark btn-icon">
+            <i class="mdi mdi-delete"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Food</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Food Name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Price</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Food Name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Category</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Food Name">
+        </div>
+        <div class="form-group">
+          <label>File upload</label>
+          <input type="file" name="img[]" class="file-upload-default">
+          <div class="input-group col-xs-12">
+            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+            <span class="input-group-append">
+              <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
